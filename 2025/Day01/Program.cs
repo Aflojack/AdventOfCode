@@ -23,7 +23,8 @@ try
         }
     }
     Console.WriteLine($"Total dials: {inputDials.Count}");
-    Console.WriteLine($"Result: {Solution.GetNumberOfTimesDialOnZero(inputDials, 50)}");
+    Console.WriteLine($"Part 1 result: {Solution.GetNumberDialOnZero(inputDials, 50)}");
+    Console.WriteLine($"Part 2 result: {Solution.GetNumberDialStopAndClickOnZero(inputDials, 50)}");
 }
 catch (IOException e)
 {
