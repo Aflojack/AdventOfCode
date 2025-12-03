@@ -9,7 +9,8 @@ try
     line = reader.ReadToEnd();
     string[] inputIdRanges = line.Split(',');
     Console.WriteLine($"Total ID ranges: {inputIdRanges.Length}");
-    Console.WriteLine($"Invalid id sum: {Solution.GetInvalidIdSum(inputIdRanges)}");
+    Console.WriteLine($"Invalid id sum with rule exactly twice: {Solution.GetInvalidIdSum(inputIdRanges, InvalidRuleType.ExactlyTwice)}");
+    Console.WriteLine($"Invalid id sum with rule at least twice: {Solution.GetInvalidIdSum(inputIdRanges, InvalidRuleType.AtLeastTwice)}");
 }
 catch (IOException e)
 {
