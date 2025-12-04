@@ -22,6 +22,7 @@ try
     }
     Console.WriteLine($"Total line count: {input.Count}");
     Console.WriteLine($"Total movable paper roll: {Solution.GetTotalMovablePaper(input, 1, 4)}");
+    Console.WriteLine($"Total movable paper roll: {Solution.GetTotalMovablePaperIterative(input, 1, 4)}");
 }
 catch (IOException e)
 {
