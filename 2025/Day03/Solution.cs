@@ -4,44 +4,39 @@ namespace Day03;
 
 public static class Solution
 {
-    public static int GetTotalOutputVoltage(ICollection<string> batteryPacks, int maxUsableInPack)
+    public static long GetTotalOutputJoltage(ICollection<string> batteryPacks, int maxUsableInPack)
     {
-        var totalJoltage = 0;
+        var totalOutput = 0L;
         foreach (var batteryPack in batteryPacks)
         {
-            var maximumJoltage = 0;
-            for (var i = 0; i < batteryPack.Length; i++)
+            long[] batteryArray = [.. batteryPack.ToArray().Select(o=>(long)Char.GetNumericValue(o))];
+            for (var i = 0; i < maxUsableInPack; i++)
             {
-                var position = i + 1;
-                var possibleJoltage = batteryPack.Substring(i, 1);
-                while (possibleJoltage.Length != maxUsableInPack)
+                for (var j = 0; j < batteryPack.Length; j++)
                 {
-                    var largestJoltage = 0;
-                    var largestPosition = 0;
-                    for (var j = position; j < batteryPack.Length; j++)
+                    if(i == 0)
                     {
-                        var currentJoltage = int.Parse(batteryPack.Substring(j, 1));
-                        if (largestJoltage < currentJoltage)
+                        if(j == 0)
                         {
-                            largestJoltage = currentJoltage;
-                            largestPosition = j;
+                            continue;
                         }
+                        batteryArray[j] = Math.Max(batteryArray[j], batteryArray[j - 1]);
+                        continue;
                     }
-                    if (largestJoltage == 0)
+                    if(j == 0)
+                    {
+                        batteryArray[0] = batteryArray[0] * 10 + long.Parse(batteryPack.Substring(i, 1));
+                        continue;
+                    }
+                    if(j + i >= batteryPack.Length)
                     {
                         break;
                     }
-                    possibleJoltage += largestJoltage;
-                    position = largestPosition + 1;
-                }
-                var possibleJoltageValue = int.Parse(possibleJoltage);
-                if (maximumJoltage < possibleJoltageValue)
-                {
-                    maximumJoltage = possibleJoltageValue;
+                    batteryArray[j] = Math.Max(batteryArray[j - 1], batteryArray[j] * 10 + long.Parse(batteryPack.Substring(j + i, 1)));
                 }
             }
-            totalJoltage += maximumJoltage;
+            totalOutput += batteryArray.Max();
         }
-        return totalJoltage;
+        return totalOutput;
     }
 }

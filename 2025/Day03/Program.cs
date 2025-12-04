@@ -21,7 +21,8 @@ try
         }
     }
     Console.WriteLine($"Total packs count: {inputBatteryPacks.Count}");
-    Console.WriteLine($"Total output joltage: {Solution.GetTotalOutputVoltage(inputBatteryPacks, 2)}");
+    Console.WriteLine($"Total output joltage: {Solution.GetTotalOutputJoltage(inputBatteryPacks, 2)}");
+    Console.WriteLine($"Total output joltage: {Solution.GetTotalOutputJoltage(inputBatteryPacks, 12)}");
 }
 catch (IOException e)
 {
@@ -30,5 +31,5 @@ catch (IOException e)
 }
 catch (Exception e)
 {
-    Console.WriteLine(e.Message);
+    Console.WriteLine(e);
 }
