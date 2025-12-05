@@ -6,7 +6,7 @@ public static class Solution
 {
     public static long GetTotalFreshIngredientId(List<string> freshRanges, List<string> ingredientIds)
     {
-        var totalFreshCount = 0;
+        var totalFreshCount = 0L;
         
         var intervals = GetIntervals(freshRanges);
 
@@ -22,6 +22,20 @@ public static class Solution
                 }
             }
         }
+        return totalFreshCount;
+    }
+
+    public static long GetTotalFreshIngredientId(List<string> freshRanges)
+    {
+        var totalFreshCount = 0L;
+        
+        var intervals = GetIntervals(freshRanges);
+
+        foreach (var interval in intervals)
+        {
+            totalFreshCount += interval.GetPointCount();
+        }
+
         return totalFreshCount;
     }
 

@@ -24,6 +24,11 @@ public class Interval
         return IsInRangeInclusive(interval.StartPoint) || IsInRangeInclusive(interval.EndPoint);
     }
 
+    public long GetPointCount()
+    {
+        return EndPoint - StartPoint + 1;
+    }
+
     public void Merge(Interval interval)
     {
         if (IsInRangeInclusive(interval.StartPoint) && IsInRangeInclusive(interval.EndPoint))

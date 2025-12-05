@@ -36,6 +36,7 @@ try
     Console.WriteLine($"Total ranges count: {inputRanges.Count}");
     Console.WriteLine($"Total id count: {inputIngredientIds.Count}");
     Console.WriteLine($"Part1 result: {Solution.GetTotalFreshIngredientId(inputRanges, inputIngredientIds)}");
+    Console.WriteLine($"Part2 result: {Solution.GetTotalFreshIngredientId(inputRanges)}");
 }
 catch (IOException e)
 {
