@@ -21,6 +21,7 @@ try
     }
     Console.WriteLine($"Total input line: {input.Count}");
     Console.WriteLine($"Part1 result: {Solution.GetTotalBeamPart1(input)}");
+    Console.WriteLine($"Part2 result: {Solution.GetTotalBeamPart2(input)}");
 }
 catch (IOException e)
 {
